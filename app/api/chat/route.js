@@ -6,7 +6,7 @@ export async function POST(req) {
     const { name, feeling, rant } = await req.json();
     const apiKey = process.env.OPENROUTER_API_KEY;
 
-    const prompt = `The person named ${name} is feeling ${feeling}. They shared: "${rant}". Provide a supportive message directly to ${name} read the instructions carefully about the format of response and avoid making sure that you followed the instructions. Instructions: Response should be a concise within 150 words and put this "You got this! ❤️" after the empathetic paragraph. Avoid adding anything other than the text and only one special character ❤️.`;
+    const prompt = `The person named ${name} is feeling ${feeling}. They shared: "${rant}". Provide a supportive message directly to ${name} read the instructions carefully about the format of response and avoid making sure that you followed the instructions. Instructions: Response should be a concise within 150 words and put this "You got this! ❤️" after the empathetic paragraph. Avoid showing any irrelevant sentences.`;
 
     const response = await axios.post(
       'https://openrouter.ai/api/v1/chat/completions',
